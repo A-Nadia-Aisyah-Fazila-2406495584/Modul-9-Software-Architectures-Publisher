@@ -27,3 +27,10 @@
 - Explanation:
     - Pada percobaan ini, saya coba untuk menjalankan publisher sebanyak empat kali. Terlihat di chart "Message rates" di RabbitMQ dashboard muncul beberapa spike. Spike tersebut terjadi karena setiap kali publisher dijalankan, ada spike message yang masuk ke RabbitMQ. 
     - Dua run pertama dilakukan dalam waktu yang berdekatan sehingga spikenya terlihat rapat dan tinggi di chart. Sedangkan antara run kedua dan ketiga ada jeda waktu yang lebih lama, sehingga spikenya terpisah lebih jauh. Ini membuktikan bahwa spike pada chart langsung berkorelasi dengan kapan publishernya dijalankan, makin sering publishernya dijalankan dalam waktu singkat maka akan semakin padat juga spike yang terlihat.
+
+## Simulating Slow Subscriber
+- RabbitMQ Dashboard:
+    ![Simulating subscriber image](/assets/images/SimulatingSlowSubscriber.png)
+    - Explanation: 
+        - Pada percobaan ini, subscriber dibuat lebih lambat dengan menambahkan delay 1 detik untuk tiap pemrosesan message. Sementara itu, publisher tetap mengirim 5 message sekaligus setiap kali dijalankan.
+        - Terlihat di chart "Queued messages" jumlah message yang mengantri sempat mencapai sekitar 17 - 18. Hal tsb terjadi karena publisher mengirim message jauh lebih cepat daripada subscriber memprosesnya. Angka 17 - 18 ini berasal dari akumulasi beberapa kali publisher dijalankan sebelum subscriber sempat menghabiskan antriannya. Ini membuktikan bahwa message broker berfungsi sebagai buffer, message tidak hilang meskipun subscribernya lambat, tetapi tetap tersimpan di queue dan diproses secara satu per satu.
