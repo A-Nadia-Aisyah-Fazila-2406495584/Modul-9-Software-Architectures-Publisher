@@ -10,7 +10,7 @@
 ## Running RabbitMQ Image:
 ![Running RabbitMQ as message broker](/assets/images/RunningRabbitMQ.png)
 
-## Sending and processing event:
+## Sending and Processing Event:
 - Publisher:
     ![Sending and processing event publisher image](/assets/images/SendingAndProcessingEventPublisher.png)
     - Explanation: Dapat dilihat bahwa publisher dijalankan dua kali dengan `cargo run`. Setiap kali dijalankan, publisher build dan langsung kirim lima event `UserCreatedEventMessage` ke message broker (RabbitMQ) tanpa output tambahan di console karena tugasnya memang only mengirim, bukan memproses.
@@ -18,3 +18,12 @@
 - Subscriber:
     ![Sending and processing event subscriber image](/assets/images/SendingAndProcessingEventSubscriber.png)
     - Explanation: Di subscriber terlihat ada sepuluh message masuk yaitu lima dari run yang pertama dan lima dari run kedua publisher. Setiap message berisi data user dengan `user_id` 1 - 5 dan `user_name` Amir, Budi, Cica, Dira, dan Emir. Ini membuktikan bahwa subscriber berhasil menerima dan memproses semua event yang dikirim dari publisher lewat RabbitMQ.
+
+## Monitoring Chart Based on Publisher:
+- RabbitMQ Dashboard:
+    ![Monitoring chart based on publisher, RabbitMQ image](/assets/images/MonitoringChartRabbitMQ.png)
+- Publisher Console
+    ![Monitoring chart based on publisher, Publisher image](/assets/images/MonitoringChartPublisher.png)
+- Explanation:
+    - Pada percobaan ini, saya coba untuk menjalankan publisher sebanyak empat kali. Terlihat di chart "Message rates" di RabbitMQ dashboard muncul beberapa spike. Spike tersebut terjadi karena setiap kali publisher dijalankan, ada spike message yang masuk ke RabbitMQ. 
+    - Dua run pertama dilakukan dalam waktu yang berdekatan sehingga spikenya terlihat rapat dan tinggi di chart. Sedangkan antara run kedua dan ketiga ada jeda waktu yang lebih lama, sehingga spikenya terpisah lebih jauh. Ini membuktikan bahwa spike pada chart langsung berkorelasi dengan kapan publishernya dijalankan, makin sering publishernya dijalankan dalam waktu singkat maka akan semakin padat juga spike yang terlihat.
