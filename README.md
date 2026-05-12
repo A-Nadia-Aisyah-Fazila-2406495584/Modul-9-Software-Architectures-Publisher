@@ -30,3 +30,10 @@
 
 ## Bonus - Running RabbitMQ Image:
 ![Bonus - Running RabbitMQ as message broker](/assets/images/Bonus-RunningRabbitMQ.png)
+
+## Bonus - Sending and Processing Event:
+- Publisher:
+    ![Sending and processing event publisher image](/assets/images/Bonus-SendingAndProcessingEventPublisher.png)
+
+- Subscriber:
+    ![Sending and processing event subscriber image](/assets/images/Bonus-SendingAndProcessingEventSubscriber.png)
