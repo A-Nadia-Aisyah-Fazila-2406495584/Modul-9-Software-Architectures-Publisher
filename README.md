@@ -27,3 +27,6 @@
 - Explanation:
     - Pada percobaan ini, saya coba untuk menjalankan publisher sebanyak empat kali. Terlihat di chart "Message rates" di RabbitMQ dashboard muncul beberapa spike. Spike tersebut terjadi karena setiap kali publisher dijalankan, ada spike message yang masuk ke RabbitMQ. 
     - Dua run pertama dilakukan dalam waktu yang berdekatan sehingga spikenya terlihat rapat dan tinggi di chart. Sedangkan antara run kedua dan ketiga ada jeda waktu yang lebih lama, sehingga spikenya terpisah lebih jauh. Ini membuktikan bahwa spike pada chart langsung berkorelasi dengan kapan publishernya dijalankan, makin sering publishernya dijalankan dalam waktu singkat maka akan semakin padat juga spike yang terlihat.
+
+## Bonus - Running RabbitMQ Image:
+![Bonus - Running RabbitMQ as message broker](/assets/images/Bonus-RunningRabbitMQ.png)
